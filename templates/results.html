@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Result
+{% endblock %}
+
+{% block main %}
+
+{% if message is not none %}
+<div class="alert alert-primary" role="alert" id="space">
+    {{ message }}
+</div>
+{% endif %}
+
+{% if message is none %}
+<div class="section">
+
+  <h2>Songs</h2>
+  <table>
+      <thead>
+          <tr>
+              <th>Song Name</th>
+              <th>Artist Name</th>
+              <th>Popularity</th>
+              <th>Valence</th>
+              <th>Energy</th>
+              <th>Tempo</th>
+              <th>Danceability</th>
+              <th>Acousticness</th>
+              <th>Liveness</th>
+              <th>Instrumentalness</th>
+              <th>Speechiness</th>
+          </tr>
+      </thead>
+      <tbody>
+          {% for song in now_saved_songs %}
+              <tr>
+                  <td>{{ song["track_name"] }}</td>
+                  <td>{{ song["artist_name"] }}</td>
+                  <td>{{ song["track_popularity"] }}</td>
+                  <td>{{ song["valence"] }}</td>
+                  <td>{{ song["energy"] }}</td>
+                  <td>{{ song["tempo"] }}</td>
+                  <td>{{ song["danceability"] }}</td>
+                  <td>{{ song["acousticness"] }}</td>
+                  <td>{{ song["liveness"] }}</td>
+                  <td>{{ song["instrumentalness"] }}</td>
+                  <td>{{ song["speechiness"] }}</td>
+                  <td> <button type="button" class="btn btn-secondary disabled">Saved</button> </td>
+              </tr>
+          {% endfor %}
+          {% for song in new_songs %}
+              <tr>
+                  <td>{{ song["track_name"] }}</td>
+                  <td>{{ song["artist_name"] }}</td>
+                  <td>{{ song["track_popularity"] }}</td>
+                  <td>{{ song["valence"] }}</td>
+                  <td>{{ song["time_signature"] }}</td>
+                  <td>{{ song["tempo"] }}</td>
+                  <td>{{ song["danceability"] }}</td>
+                  <td>{{ song["acousticness"] }}</td>
+                  <td>{{ song["liveness"] }}</td>
+                  <td>{{ song["instrumentalness"] }}</td>
+                  <td>{{ song["speechiness"] }}</td>
+                  <form action="/results" method="post" name="add_song_form" id="add_song_form">
+                    <td><button type="submit" class="btn btn-outline-primary" name="add_song" id="add_song" value="{{ song.id }}">Add Song</button></td>
+                  </form>
+              </tr>
+          {% endfor %}
+      </tbody>
+  </table>
+</div>
+</div>
+{% endif %}
+
+{% endblock %}
