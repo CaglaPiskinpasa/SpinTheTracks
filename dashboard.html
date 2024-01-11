@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    My List
+{% endblock %}
+
+{% block main %}
+
+
+{% if message %}
+<div class="alert alert-primary" role="alert" id="space">
+    {{ message }}
+</div>
+{% endif %}
+
+{% if not message %}
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Artist</th>
+            <th>Album Name</th>
+            <th>Release Date</th>
+
+        </tr>
+    </thead>
+<tbody>
+    {% for baz in user_songs %}
+    {% for song in baz %}
+        <tr>
+            <td>{{ song["track_name"] }}</td>
+            <td>{{ song["artist_name"] }}</td>
+            <td>{{ song["album_name"] }}</td>
+            <td>{{ song["album_release_date"] }}</td>
+            <form action="/dashboard" method="post" name="rm_song" id="rm_song">
+                <td><button type="submit" class="btn btn-outline-light" name="rm_song" id="rm_song" value="{{ song.id }}">Remove Song</button></td>
+              </form>
+        </tr>
+    {% endfor %}
+    {% endfor %}
+</tbody>
+</table>
+
+{% endif %}
+{% endblock %}

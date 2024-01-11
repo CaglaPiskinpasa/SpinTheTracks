@@ -1,0 +1,170 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+
+<body>
+
+    {% if message is not none %}
+<div class="alert alert-primary" role="alert" id="space">
+    {{ message }}
+</div>
+{% endif %}
+
+    <form action="/" method="post">
+        <div id="space">
+            <label for="popularity" class="form-label">Popularity:<div class="form-check form-switch"><input class="form-check-input" type="checkbox" id="pop1"></div></label>
+                <script>
+                    pop1.addEventListener("change", change_status);
+                    function change_status()
+                    {
+                        if (popularity.disabled === false) {
+                            popularity.disabled = true;
+                        } else {
+                            popularity.disabled = false;
+                        }
+                    }
+                </script>
+            <p>0 to 100</p><input type="range" class="form-range" id="popularity" name="popularity" min="0" max="100" step="1" disabled="">
+        </div>
+
+        <div id="space">
+            <label for="tempo" class="form-label">Tempo:<div class="form-check form-switch"><input class="form-check-input" type="checkbox" id="tem1"></div></label>
+            <script>
+                tem1.addEventListener("change", change_status);
+                function change_status()
+                {
+                    if (tempo.disabled === false) {
+                        tempo.disabled = true;
+                    } else {
+                        tempo.disabled = false;
+                    }
+                }
+            </script>
+            <p>0 to 244.162</p><input type="range" class="form-range" id="tempo" name="tempo" min="0" max="244.162" step="0.001" disabled="" oninput="this.nextElementSibling.value = this.value"/><output></output>
+        </div>
+
+        <div id="space">
+            <label for="valence" class="form-label">Valence:<div class="form-check form-switch"><input class="form-check-input" type="checkbox" id="val1"></div></label>
+            <script>
+                val1.addEventListener("change", change_status);
+                function change_status()
+                {
+                    if (valence.disabled === false) {
+                        valence.disabled = true;
+                    } else {
+                        valence.disabled = false;
+                    }
+                }
+            </script>
+            <p>0.0 to 1.0</p><input type="range" class="form-range" id="valence" name="valence" step="0.0001" disabled="" min="0" max="1.0">
+        </div>
+
+        <div id="space">
+            <label for="danceability" class="form-label">Danceability:<div class="form-check form-switch"><input class="form-check-input" type="checkbox" id="dan1"></div></label>
+            <script>
+                dan1.addEventListener("change", change_status);
+                function change_status()
+                {
+                    if (danceability.disabled === false) {
+                        danceability.disabled = true;
+                    } else {
+                        danceability.disabled = false;
+                    }
+                }
+            </script>
+            <p>0.0 to 0.994</p><input type="range" class="form-range" id="danceability" name="danceability" step="0.001" disabled="" min="0" max="0.994">
+        </div>
+
+        <div id="space">
+            <label for="energy" class="form-label">Energy:<div class="form-check form-switch"><input class="form-check-input" type="checkbox" id="en1"></div></label>
+            <script>
+                en1.addEventListener("change", change_status);
+                function change_status()
+                {
+                    if (energy.disabled === false) {
+                        energy.disabled = true;
+                    } else {
+                        energy.disabled = false;
+                    }
+                }
+            </script>
+            <p>0.0 to 1.0</p><input type="range" class="form-range" id="energy" name="energy" step="0.001" disabled="" min="0" max="1.0">
+        </div>
+
+
+        <div id="space">
+            <label for="acousticness" class="form-label">Acousticness:<div class="form-check form-switch"><input class="form-check-input" type="checkbox" id="ac1"></div></label>
+            <script>
+                ac1.addEventListener("change", change_status);
+                function change_status()
+                {
+                    if (acousticness.disabled === false) {
+                        acousticness.disabled = true;
+                    } else {
+                        acousticness.disabled = false;
+                    }
+                }
+            </script>
+            <p>0.0 to 0.996</p><input type="range" class="form-range" id="acousticness" name="acousticness" step="0.00001" disabled="" min="0" max="0.996">
+        </div>
+
+        <div id="space">
+            <label for="liveness" class="form-label">Liveness:<div class="form-check form-switch"><input class="form-check-input" type="checkbox" id="liv1"></div></label>
+            <script>
+                liv1.addEventListener("change", change_status);
+                function change_status()
+                {
+                    if (liveness.disabled === false) {
+                        liveness.disabled = true;
+                    } else {
+                        liveness.disabled = false;
+                    }
+                }
+            </script>
+            <p>0.0 to 1.0</p><input type="range" class="form-range" id="liveness" name="liveness" step="0.0001" disabled="" min="0" max="1.0">
+        </div>
+
+
+        <div id="space">
+            <label for="instrumentalness" class="form-label">Instrumentalness:<div class="form-check form-switch"><input class="form-check-input" type="checkbox" id="int1"></div></label>
+            <script>
+                int1.addEventListener("change", change_status);
+                function change_status()
+                {
+                    if (instrumentalness.disabled === false) {
+                        instrumentalness.disabled = true;
+                    } else {
+                        instrumentalness.disabled = false;
+                    }
+                }
+            </script>
+            <p>0.0 to 1.0</p><input type="range" class="form-range" id="instrumentalness" name="instrumentalness" step="0.0001" disabled="" min="0" max="1.0">
+        </div>
+
+        <div id="space">
+            <label for="speechiness" class="form-label">Speechiness:<div class="form-check form-switch"><input class="form-check-input" type="checkbox" id="sp1"></div></label>
+            <script>
+                sp1.addEventListener("change", change_status);
+                function change_status()
+                {
+                    if (speechiness.disabled === false) {
+                        speechiness.disabled = true;
+                    } else {
+                        speechiness.disabled = false;
+                    }
+                }
+            </script>
+            <p>0.0 to 0.97</p><input type="range" class="form-range" id="speechiness" name="speechiness" step="0.0001" disabled="" min="0" max="0.97">
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+</body>
+
+{% endblock %}
